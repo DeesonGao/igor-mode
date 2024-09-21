@@ -594,7 +594,7 @@
   "Words that decrease indentation level")
 
 (defvar igor-openblock-words
-  '("Function" "Macro" "Menu" "Picture" "Proc" "Static" "Threadsafe" "Structure" "Window"
+  '("Function" "Macro" "Menu" "Submenu" "Picture" "Proc" "Static" "Threadsafe" "Structure" "Window"
     "default" "do" "for" "if" "else" "elseif" "case" "switch"
     "try" "catch" "#if" "#elif" "#ifdef" "#ifndef")
   "Words that increase indentation level")
@@ -858,6 +858,7 @@ the function `append` to concatenate results.
     ("Threadsafe Function" "End")
     ("Macro" "End" "EndMacro")
     ("Menu" "End")
+    ("Submenu" "End")
     ("Picture" "End" "EndMacro")
     ("Static Picture" "End" "EndMacro")
     ("Proc" "End" "EndMacro")
