@@ -423,13 +423,13 @@
 (defconst igor-comment-re "^[ \t]*\/\/.*$")
 
 (defconst igor-integer-re
-  "\\(?:\\+\\|-\\)?[0-9]+"
+  "\\(?:\\+\\|-\\)?\[0-9]+"
   "Integer syntax in Igor")
 (defconst igor-number-re
   (concat
    "\\_<"
    "\\(?:\\+\\|-\\)?"                   ; sign part
-   "\\(?:[0-9]*\\.\\)?[0-9]+"           ; integer or decimal
+   "\\(?:[0-9]*\\.\\)?\[0-9]+"           ; integer or decimal
    "\\(?:e" igor-integer-re "\\)?"      ; exponent part
    "\\_>")
    "Number syntax in Igor")
@@ -450,7 +450,7 @@
 
 (defconst igor-parameter-re
   (concat
-   "\\[?[ \t]*" igor-name-re "[ \t]*\\]?")
+   "\\[?\[ \t]*" igor-name-re "[ \t]*\\]?")
   "Parameter name with optional brackets")
 
 (defconst igor-parameter-list-re
@@ -531,8 +531,8 @@
     ;; parens
     (modify-syntax-entry ?\( "(" st)
     (modify-syntax-entry ?\) ")" st)
-    (modify-syntax-entry ?[ "(" st)
-    (modify-syntax-entry ?] ")" st)
+    (modify-syntax-entry ?\[ "(" st)
+    (modify-syntax-entry ?\] ")" st)
     st)
   "Syntax table used while in `igor-mode'")
 
@@ -1231,26 +1231,26 @@ MATCH-LIST-RE that matches the current line; nil if no match"
    (buffer-file-name)))
 
 (add-hook 'igor-mode-hook
-          '(lambda ()
-             (add-hook 'before-save-hook
-                       'igor-unload-igor-procedure nil t)))
+          #'(lambda ()
+              (add-hook 'before-save-hook
+                        'igor-unload-igor-procedure nil t)))
 (add-hook 'igor-mode-hook
-          '(lambda ()
-             (add-hook 'after-save-hook
-                       'igor-reload-igor-procedure nil t)))
+          #'(lambda ()
+              (add-hook 'after-save-hook
+                        'igor-reload-igor-procedure nil t)))
 
 ;; Clear memory of keyword lists (which are now saved in regexps)
-(setq igor-procdec-keywords nil)
-(setq igor-procsub-keywords nil)
-(setq igor-objrefs-keywords nil)
-(setq igor-flowcontrol-keywords nil)
-(setq igor-hash-keywords nil)
-(setq igor-other-keywords nil)
-(setq igor-builtin-functions nil)
-(setq igor-builtin-operations nil)
+;; (setq igor-procdec-keywords nil)
+;; (setq igor-procsub-keywords nil)
+;; (setq igor-objrefs-keywords nil)
+;; (setq igor-flowcontrol-keywords nil)
+;; (setq igor-hash-keywords nil)
+;; (setq igor-other-keywords nil)
+;; (setq igor-builtin-functions nil)
+;; (setq igor-builtin-operations nil)
 
 ;; Define this mode
-(define-derived-mode igor-mode fundamental-mode "Igor"
+(define-derived-mode igor-mode prog-mode "Igor"
   "Major mode for editing IgorPro procedure files."
   (set (make-local-variable 'font-lock-defaults) igor-font-lock-defaults)
   (set-syntax-table igor-syntax-table)
