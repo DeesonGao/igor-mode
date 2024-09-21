@@ -460,11 +460,15 @@
    "\\(?:[ \t]*\\,[ \t]*" igor-parameter-re "\\)*")
   "Procedure parameter list")
 
+(defconst igor-defun-threadsafe-re
+  "\\(?:Threadsafe[ \t]+\\)")
+
 (defconst igor-defun-static-re
   "\\(?:Static[ \t]+\\)")
 
 (defconst igor-defun-start-function
   (concat
+   igor-defun-threadsafe-re "?"
    igor-defun-static-re "?"
    "\\(?:Function"
    "\\(\\/\\(?:C\\|D\\|S\\|DF\\|WAVE\\)\\)?\\)"))
