@@ -433,7 +433,7 @@
    "\\(?:[0-9]*\\.\\)?\[0-9]+"           ; integer or decimal
    "\\(?:e" igor-integer-re "\\)?"      ; exponent part
    "\\_>")
-   "Number syntax in Igor")
+  "Number syntax in Igor")
 (defconst igor-hex-num-re
   (concat
    "\\_<"
@@ -561,7 +561,7 @@
 
 (defvar igor-font-lock-keywords-2
   `(append igor-font-lock-keywords-1
-          (,igor-other-keywords-re . font-lock-keyword-face)))
+    (,igor-other-keywords-re . font-lock-keyword-face)))
 
 (defvar igor-font-lock-keywords-default
   igor-font-lock-keywords-1)
@@ -585,8 +585,8 @@
 ;; Indentation
 (defvar igor-closeblock-words
   '("End" "EndMacro" "EndStructure"
-   "while" "endtry" "endfor" "elseif"
-   "endif" "endswitch" "#elif" "#endif")
+    "while" "endtry" "endfor" "elseif"
+    "endif" "endswitch" "#elif" "#endif")
   "Words that decrease indentation level")
 
 (defvar igor-openblock-words
@@ -800,11 +800,11 @@ ALIST, where KEY is the car and all found values for key in ALIST
 is the cdr. (e.g. '((1 2) (1 3) (5 6)) --> '(1 2 3))"
   (cons key
         (apply 'append
-        (mapcar
-         'igor-convert-to-list
-         (mapcar 'cdr
-                 (igor-alist-all-assoc
-                  key alist))))))
+               (mapcar
+                'igor-convert-to-list
+                (mapcar 'cdr
+                        (igor-alist-all-assoc
+                         key alist))))))
 
 (defun igor-remove-alist-key (key alist)
   "Return a copy of ALIST with all associations by KEY removed"
@@ -819,8 +819,8 @@ is the cdr. (e.g. '((1 2) (1 3) (5 6)) --> '(1 2 3))"
          (assoc key alist)))
     (if found-assoc
         (cons found-assoc
-         (igor-alist-all-assoc
-          key (remove found-assoc alist)))
+              (igor-alist-all-assoc
+               key (remove found-assoc alist)))
       nil)))
 
 (defun igor-convert-to-list (maybe-list)
@@ -1037,11 +1037,11 @@ that matches the MATCH-CELL from a match list"
         (if close-match
             (igor-update-close-match-count
              close-counts close-match))
-          (let ((open-match
-                 (igor-open-match-match-cell match-cell)))
-            (if open-match
-                (igor-update-open-match-count
-                 close-counts open-match)))))))
+        (let ((open-match
+               (igor-open-match-match-cell match-cell)))
+          (if open-match
+              (igor-update-open-match-count
+               close-counts open-match)))))))
 
 (defun igor-close-match-match-cell (match-cell)
   (igor-looking-at-re-list
@@ -1183,7 +1183,7 @@ MATCH-LIST-RE that matches the current line; nil if no match"
                (igor-exec-cmd-compileprocedures))
               (igor-wait-for-procs-compiled))
           nil)
-    nil)))
+        nil)))
 
 (defun igor-reload-igor-procedure ()
   (message "Reloading Igor Procedure")
@@ -1217,7 +1217,7 @@ MATCH-LIST-RE that matches the current line; nil if no match"
   (let ((wait-time 0))
     (progn
       (while (and (< wait-time 10)
-                 (not (equal (igor-exec-is-procs-compiled) t)))
+                  (not (equal (igor-exec-is-procs-compiled) t)))
         (progn
           (setq wait-time (+ wait-time 0.5))
           (sleep-for 0.5))))))
