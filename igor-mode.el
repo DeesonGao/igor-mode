@@ -412,7 +412,7 @@
 
 (defconst igor-defun-start-words
   '("Function" "Macro" "Picture" "Proc"
-    "Static" "Structure" "Window")
+    "Static" "Threadsafe" "Structure" "Window")
   "Words that define the beginning of a definition block")
 
 (defconst igor-defun-end-words
@@ -589,7 +589,7 @@
   "Words that decrease indentation level")
 
 (defvar igor-openblock-words
-  '("Function" "Macro" "Menu" "Picture" "Proc" "Static" "Structure" "Window"
+  '("Function" "Macro" "Menu" "Picture" "Proc" "Static" "Threadsafe" "Structure" "Window"
     "default" "do" "for" "if" "else" "elseif" "case" "switch"
     "try" "catch" "#if" "#elif" "#ifdef" "#ifndef")
   "Words that increase indentation level")
@@ -850,6 +850,7 @@ the function `append` to concatenate results.
 (defconst igor-start-end-pairs
   '(("Function" "End")
     ("Static Function" "End")
+    ("Threadsafe Function" "End")
     ("Macro" "End" "EndMacro")
     ("Menu" "End")
     ("Picture" "End" "EndMacro")
