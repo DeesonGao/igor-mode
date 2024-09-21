@@ -74,6 +74,7 @@
   "Keymap for IgorPro major mode")
 
 ;; Autoload for igor files
+;;;###autoload
 (setq auto-mode-alist
       (append '(("\\.ipf$" . igor-mode)) auto-mode-alist))
 
@@ -1251,6 +1252,7 @@ MATCH-LIST-RE that matches the current line; nil if no match"
 ;; (setq igor-builtin-operations nil)
 
 ;; Define this mode
+;;;###autoload
 (define-derived-mode igor-mode prog-mode "Igor"
   "Major mode for editing IgorPro procedure files."
   (set (make-local-variable 'font-lock-defaults) igor-font-lock-defaults)
