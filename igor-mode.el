@@ -514,7 +514,9 @@
     (modify-syntax-entry ?\" "\"" st)   ; string literals
     (modify-syntax-entry ?\' "\"" st)   ; literal names
     ;; make underscores part of words
-    (modify-syntax-entry ?_  "w" st)
+    ;; (modify-syntax-entry ?_  "w" st)
+    (modify-syntax-entry ?_  "_" st)
+    (modify-syntax-entry ?#  "_" st)
     ;; operators
     (modify-syntax-entry ?$  "." st)
     (modify-syntax-entry ?&  "." st)
