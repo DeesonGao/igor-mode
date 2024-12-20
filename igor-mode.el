@@ -394,22 +394,22 @@
 
 ;; Regexp optimized versions of word lists
 (defvar igor-procdec-keywords-re
-  (regexp-opt igor-procdec-keywords 'words))
+  (regexp-opt igor-procdec-keywords 'symbols))
 (defvar igor-procsub-keywords-re
-  (regexp-opt igor-procsub-keywords 'words))
+  (regexp-opt igor-procsub-keywords 'symbols))
 (defvar igor-objrefs-keywords-re
-  (regexp-opt igor-objrefs-keywords 'words))
+  (regexp-opt igor-objrefs-keywords 'symbols))
 (defvar igor-flowcontrol-keywords-re
-  (regexp-opt igor-flowcontrol-keywords 'words))
+  (regexp-opt igor-flowcontrol-keywords 'symbols))
 (defvar igor-hash-keywords-re
-  (regexp-opt igor-hash-keywords 'words))
+  (regexp-opt igor-hash-keywords 'symbols))
 (defvar igor-other-keywords-re
-  (regexp-opt igor-other-keywords 'words))
+  (regexp-opt igor-other-keywords 'symbols))
 
 (defconst igor-builtin-functions-re
-  (regexp-opt igor-builtin-functions 'words))
+  (regexp-opt igor-builtin-functions 'symbols))
 (defconst igor-builtin-operations-re
-  (regexp-opt igor-builtin-operations 'words))
+  (regexp-opt igor-builtin-operations 'symbols))
 
 (defconst igor-defun-start-words
   '("Function" "Macro" "Picture" "Proc"
@@ -489,7 +489,7 @@
    prefix, but other keywords cannot.")
 
 (defconst igor-defun-end-re
-  (concat "^[ \t]*" (regexp-opt igor-defun-end-words 'words)))
+  (concat "^[ \t]*" (regexp-opt igor-defun-end-words 'symbols)))
 
 (defvar igor-defun-re
   (concat
@@ -600,10 +600,10 @@
   "Words that increase indentation level")
 
 (defvar igor-closeblock-re
-  (concat "^[ \t]*" (regexp-opt igor-closeblock-words 'words)))
+  (concat "^[ \t]*" (regexp-opt igor-closeblock-words 'symbols)))
 
 (defvar igor-openblock-re
-  (concat "^[ \t]*" (regexp-opt igor-openblock-words 'words)))
+  (concat "^[ \t]*" (regexp-opt igor-openblock-words 'symbols)))
 
 ;; Movement related commands
 ;; ==================================================
@@ -717,7 +717,7 @@ matching"
   "Convert a list of words WORDLIST into an optimized regexp for
 indentation matching"
   (igor-wrap-re-startline
-   (regexp-opt wordlist 'words)))
+   (regexp-opt wordlist 'symbols)))
 
 (defun igor-append-pairs (curlist inlist &optional exists-only)
   "Adds the pairs in INLIST to the CURLIST, adding the cdr of the
